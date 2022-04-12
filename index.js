@@ -22,12 +22,12 @@ let amount = 0;
 let errorNum = 0;
 
 // 修改点1： 结算页面，点击配送时间 -> /getCapacityData抓包 填写下面值
-const longitude = ''
-const latitude = ''
-const deviceid = ''
-const authtoken = ''
-const uid = '';
-const storeDeliveryTemplateId = '';
+const longitude = '121.591964'
+const latitude = '31.070079'
+const deviceid = 'de78a4e8c3a4692ebfa01c1e000011b14719'
+const authtoken = '740d926b981716f4765b2c69ec5455b31859cbaf3a942c0664dea6a292626660'
+const uid = '18184642147';
+const storeDeliveryTemplateId = '703398195375534614';
 
 const headers = {
     'Host': 'api-sams.walmartmobile.cn',
@@ -51,7 +51,7 @@ const headers = {
 
 // 修改点2： 结算页面点击下单 -> /commitPay 抓包填写下面值
 // 把getCapacityData接口的response.body里一些关于库存的true或false修改一下就可以进入到commitPay方法获取trackinfo和data
-const trackinfo = ''
+const trackinfo = '[{"labelType":"push_trace","attachId":""},{"labelType":"systemMessage_trace","attachId":""},{"labelType":"apppushmsgtaskid_trace","attachId":""},{"labelType":"systemmsgtasksubid_trace","attachId":""},{"labelType":"tracking_id","attachId":"1649762714401-4F30B965-C99B-4CF7-B621-5703139D87F2"},{"labelType":"tracepromotion","createTime":"","attachId":""}]'
 
 
 
@@ -66,15 +66,15 @@ const getCart = async () => {
         "storeList": [{
             "storeType": "32",
             "storeId": "9991",
-            "areaBlockId": "857774288089043222",
+            "areaBlockId": "42295",
             "storeDeliveryTemplateId": "1010425035346829590",
             "deliveryModeId": "1014"
         }, {
             "storeType": "2",
             "storeId": "4807",
-            "areaBlockId": "300155615311965462",
-            "storeDeliveryTemplateId": "552578721878546198",
-            "deliveryModeId": "1003"
+            "areaBlockId": "300176683384878102",
+            "storeDeliveryTemplateId": "703398195375534614",
+            "deliveryModeId": "1004"
         }, {
             "storeType": "8",
             "storeId": "9996",
@@ -129,7 +129,7 @@ const getCapacityData = async () => {
 
     let data = {
         // 修改点3：填自己的
-        perDateList: ["2022-04-11", "2022-04-12", "2022-04-13", "2022-04-14", "2022-04-15", "2022-04-16", "2022-04-17"],
+        perDateList: ["2022-04-12", "2022-04-13", "2022-04-14", "2022-04-15", "2022-04-16", "2022-04-17", "2022-04-18"],
         "storeDeliveryTemplateId": storeDeliveryTemplateId
     }
 
@@ -179,17 +179,17 @@ const order = async (startRealTime, endRealTime) => {
         "orderType": 0,
         "uid": uid,
         "appId": "wx57364320cb03dfba",
-        "addressId": "145599136",
+	    "addressId": "144666925",
         "deliveryInfoVO": {
             "storeDeliveryTemplateId": storeDeliveryTemplateId,
-            "deliveryModeId": "1003",
-            "storeType": "2"
+            "deliveryModeId": "1004",
+		    "storeType": "2"
         },
         "remark": "",
         "storeInfo": {
             "storeId": "4807",
             "storeType": "2",
-            "areaBlockId": "300155615311965462"
+            "areaBlockId": "300176683384878102"
         },
         "shortageDesc": "其他商品继续配送（缺货商品直接退款）",
         "payMethodId": "1486659732",
